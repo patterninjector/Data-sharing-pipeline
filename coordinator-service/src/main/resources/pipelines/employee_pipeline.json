@@ -1,0 +1,23 @@
+{
+  "name": "Employee Data Pipeline",
+  "description": "Processes employee data through filter and aggregation",
+  "inputFile": "classpath:data/employees.json",
+  "steps": [
+    {
+      "service": "filter",
+      "config": {
+        "field": "age",
+        "operator": ">",
+        "value": 30
+      }
+    },
+    {
+      "service": "aggregation",
+      "config": {
+        "group_by": "department",
+        "operation": "average",
+        "field": "salary"
+      }
+    }
+  ]
+}

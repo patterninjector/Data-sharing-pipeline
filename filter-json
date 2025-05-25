@@ -1,0 +1,3 @@
+curl http://localhost:8095/api/services?name=advocate
+
+[{"name":"advocate","namespace":"trust-plane","clusterIP":"10.152.183.179","type":"ClusterIP","ports":[{"name":"https","port":8011,"targetPort":"8011","protocol":"TCP"}],"labels":{"app":"advocate"},"annotations":{"kubectl.kubernetes.io/last-applied-configuration":"{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"advocate\"},\"name\":\"advocate\",\"namespace\":\"trust-plane\"},\"spec\":{\"ports\":[{\"name\":\"https\",\"port\":8011,\"targetPort\":8011}],\"selector\":{\"app\":\"advocate\"}}}\n"},"creationTime":"2025-03-28T15:17:11Z"}]

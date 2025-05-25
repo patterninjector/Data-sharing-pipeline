@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  filter-service:
+    build: ./filter-service
+    ports: ["8081:8081"]
+    platform: linux/arm64
+
+  aggregation-service:
+    build: ./aggregation-service
+    ports: ["8082:8082"]
+    platform: linux/arm64
+
+  anonymization-service:
+    build: ./anonymization-service
+    ports: ["8083:8083"]
+    platform: linux/arm64
+
+
+  formatting-service:
+    build: ./formatting-service
+    ports: ["8084:8084"]
+    platform: linux/arm64
+
+
+  coordinator:
+    build: ./coordinator-service
+    ports: ["8080:8080"]
+    platform: linux/arm64
+    volumes:
+      - ./config:/app/config  # Mount config files
+    depends_on:
+      - filter-service
+      - aggregation-service
+      - anonymization-service
+      - formatting-service

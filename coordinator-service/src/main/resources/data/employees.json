@@ -1,0 +1,5 @@
+[
+  {"name": "Alice", "age": 35, "salary": 80000, "department": "Engineering"},
+  {"name": "Bob", "age": 28, "salary": 75000, "department": "Engineering"},
+  {"name": "Charlie", "age": 42, "salary": 90000, "department": "Marketing"}
+]

@@ -1,0 +1,23 @@
+{
+  "name": "BannedBooksPipeline",
+  "description": "Processes banned books dataset with filtering, anonymization, and aggregation and formatting ",
+  "inputFile": "https://www.berlin.de/verbannte-buecher/suche/index.php/index/all.json?q=",
+  "processingMode" : "BROKEN_URL",
+  "steps": [
+    {
+      "service": "filter",
+      "config": {
+        "field": "firsteditionpublicationyear",
+        "operator": ">",
+        "value": 1930
+      }
+    },
+    {
+      "service": "anonymization",
+      "config": {
+        "fields": ["authorfirstname","authorlastname","ocrresult"],
+        "method" : "mask"
+      }
+    }
+  ]
+}
