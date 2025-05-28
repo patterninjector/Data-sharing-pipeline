@@ -16,7 +16,7 @@
       "service": "formatting",
       "config": {
         "output_format": "csv",
-        "fields": ["count","firsteditionpublicationplace"]
+        "fields": ["count_title","firsteditionpublicationplace"]
       }
     }
   ]

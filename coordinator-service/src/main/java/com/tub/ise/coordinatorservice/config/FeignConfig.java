@@ -15,6 +15,8 @@ public class FeignConfig {
             // Add common headers if needed
             template.header("Content-Type", "application/json");
             template.header("Accept", "application/json");
+            template.header("X-Username","admin");
+            template.header("X-Password","admin123");
         };
     }
 

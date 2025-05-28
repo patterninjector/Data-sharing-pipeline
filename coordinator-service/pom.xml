@@ -30,6 +30,11 @@
             <version>3.1.4</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-okhttp</artifactId>
+        </dependency>
+
         <!-- Common DTOs -->
         <dependency>
             <groupId>com.tub.ise</groupId>

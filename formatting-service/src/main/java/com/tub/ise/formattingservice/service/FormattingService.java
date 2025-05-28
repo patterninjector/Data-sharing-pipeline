@@ -32,7 +32,13 @@ public class FormattingService {
                 inputData,
                 request.getConfig()
         );
-        return new ServiceResponse((List<Map<String, Object>>) processedData);
+        String formatType = (String) request.getConfig().getOrDefault("output_format", "json");
+        if(formatType.equalsIgnoreCase("csv")){
+            return new ServiceResponse((String) processedData);
+        }else {
+            return new ServiceResponse((List<Map<String, Object>>) processedData);
+        }
+
     }
 
 

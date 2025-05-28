@@ -2,7 +2,9 @@ package com.tub.ise.aggrigationservice.config;
 
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.client.RestTemplate;
@@ -17,9 +19,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
+@PropertySource("classpath:application.properties")
 public class AuthFilter extends OncePerRequestFilter {
 
-    private final RestTemplate restTemplate = new RestTemplate();
+    @Autowired
+    private RestTemplate restTemplate;
     @Value("${auth.service.url}")
     private String authServiceUrl;
 

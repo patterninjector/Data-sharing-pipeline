@@ -6,6 +6,7 @@ import com.tub.ise.commondtos.ServiceResponse;
 import com.tub.ise.coordinatorservice.config.FeignConfig;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 //for non valid url test scenario
 @FeignClient(
@@ -16,5 +17,5 @@ import org.springframework.web.bind.annotation.PostMapping;
 public interface NonexistentServiceClient {
 
     @PostMapping("/blablabla")
-    ServiceResponse process(ServiceRequest request);
+    ServiceResponse process(@RequestBody ServiceRequest request);
 }

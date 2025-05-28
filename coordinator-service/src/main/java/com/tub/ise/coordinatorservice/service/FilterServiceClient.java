@@ -8,6 +8,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 //import org.springframework.retry.annotation.Backoff;
 //import org.springframework.retry.annotation.Retryable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @FeignClient(
         name = "filter-service",
@@ -24,18 +25,18 @@ public interface FilterServiceClient extends ServiceClient {
 //            maxAttempts = 3,
 //            backoff = @Backoff(delay = 1000, multiplier = 2)
 //    )
-    ServiceResponse processNormal(ServiceRequest request);
+    ServiceResponse processNormal(@RequestBody ServiceRequest request);
 
     @Override
     @PostMapping("/flaky-filter")
-    ServiceResponse processFlaky(ServiceRequest request);
+    ServiceResponse processFlaky(@RequestBody ServiceRequest request);
 
     @Override
     @PostMapping("/slow-filter")
-    ServiceResponse processSlow(ServiceRequest request);
+    ServiceResponse processSlow(@RequestBody ServiceRequest request);
 
     //for non-valid path test scenario
     @Override
     @PostMapping("/block-filter")
-    ServiceResponse processBlock(ServiceRequest request);
+    ServiceResponse processBlock(@RequestBody ServiceRequest request);
 }
