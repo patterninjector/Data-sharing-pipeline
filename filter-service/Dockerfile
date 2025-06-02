@@ -1,18 +1,15 @@
-# filter-service/Dockerfile
-# Stage 1: Build the application
-FROM maven:3.8.6-openjdk-11 as build
-WORKDIR /app
+# Build stage
+FROM maven:3.8.6-eclipse-temurin-17 AS build
+WORKDIR /build
 
-# Copy only the POM file first to leverage Docker cache
-COPY pom.xml .
+# Copy everything (including parent pom and all modules)
+COPY ../.. .
 
-# Download all dependencies
-RUN mvn dependency:go-offline
+# Install common modules into local Maven repo
+RUN mvn install -DskipTests -pl common-dtos -am
 
-# Copy the rest of the source code
-COPY src/ /app/src/
-
-# Build the application
+# Now package only this service
+WORKDIR /build/filter-service
 RUN mvn clean package -DskipTests
 
 # Stage 2: Run the application
@@ -20,7 +17,7 @@ FROM openjdk:11-jre-slim
 WORKDIR /app
 
 # Copy the built JAR from the build stage
-COPY --from=build /app/target/filter-service-*.jar /app/filter-service.jar
+COPY --from=build /build/filter-service/target/filter-service-*.jar /app/filter-service.jar
 
 # Expose the port
 EXPOSE 8081

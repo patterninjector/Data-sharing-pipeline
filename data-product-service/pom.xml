@@ -10,6 +10,7 @@
     </parent>
     <groupId>com.tub.ise</groupId>
     <artifactId>data-product-service</artifactId>
+    <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>data-product-service</name>
     <description>data-product-service</description>

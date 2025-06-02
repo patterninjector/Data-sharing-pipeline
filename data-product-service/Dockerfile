@@ -9,12 +9,12 @@ COPY ../.. .
 RUN mvn install -DskipTests -pl common-dtos -am
 
 # Now package only this service
-WORKDIR /build/formatting-service
+WORKDIR /build/data-product-service
 RUN mvn clean package -DskipTests
 
 # Run stage
 FROM openjdk:17-jdk-slim
 WORKDIR /app
-COPY --from=build /build/formatting-service/target/formatting-service-*.jar /app/formatting-service.jar
-EXPOSE 8084
-ENTRYPOINT ["java", "-jar", "formatting-service.jar"]
+COPY --from=build /build/data-product-service/target/data-product-service-*.jar /app/data-product-service.jar
+EXPOSE 8089
+ENTRYPOINT ["java", "-jar", "data-product-service.jar"]

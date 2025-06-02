@@ -13,6 +13,7 @@
     <groupId>com.tub.ise</groupId>
 
     <artifactId>filter-service</artifactId>
+    <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>Filtering Service</name>
     <description>Filtering microservice for the data pipeline</description>
