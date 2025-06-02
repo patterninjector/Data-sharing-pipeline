@@ -136,7 +136,7 @@ public class PipelineOrchestrator {
             System.out.print("The InputData From URL");
 
             // Process each step
-            Object currentData = inputData.subList(0,2);
+            Object currentData = inputData;
             for (PipelineStepConfig step : pipelineConfig.getSteps()) {
                 System.out.print("Executing the Step:" + step.getService());
                 ServiceRequest request = new ServiceRequest((List<Map<String, Object>>) currentData, step.getConfig());

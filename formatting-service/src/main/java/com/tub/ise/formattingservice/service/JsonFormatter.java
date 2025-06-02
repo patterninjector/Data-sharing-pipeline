@@ -19,6 +19,10 @@ public class JsonFormatter implements Formatter {
     @Override
     public Object format(List<Map<String, Object>> data, List<String> fields) {
         try {
+
+            if(data== null ||data.isEmpty()) {
+                return null;
+            }
             if (fields == null || fields.isEmpty()) {
                 // Return all fields if none specified
                 return objectMapper.writeValueAsString(data);

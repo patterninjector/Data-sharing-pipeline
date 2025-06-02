@@ -16,7 +16,7 @@ public class CsvFormatter implements Formatter {
     @Override
     public Object format(List<Map<String, Object>> data, List<String> fields) {
         if (data == null || data.isEmpty()) {
-            return "";
+            return null;
         }
 
         if (fields == null || fields.isEmpty()) {

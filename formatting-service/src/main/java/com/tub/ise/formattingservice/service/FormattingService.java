@@ -27,17 +27,21 @@ public class FormattingService {
             throw new IllegalArgumentException("Invalid input data format", e);
         }
 
+
+
         // Process the data
         Object processedData = format(
                 inputData,
                 request.getConfig()
         );
-        String formatType = (String) request.getConfig().getOrDefault("output_format", "json");
-        if(formatType.equalsIgnoreCase("csv")){
-            return new ServiceResponse((String) processedData);
-        }else {
-            return new ServiceResponse((List<Map<String, Object>>) processedData);
+
+        if(processedData == null){
+            return new ServiceResponse();
         }
+
+        String formatType = (String) request.getConfig().getOrDefault("output_format", "json");
+
+        return new ServiceResponse((String) processedData);
 
     }
 

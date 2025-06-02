@@ -31,24 +31,29 @@ public class FilterService {
         String field = (String) config.get("field");
         String operator = (String) config.get("operator");
         Object value = config.get("value");
+        Comparable<Double> fieldValue = null;
 
         if (!item.containsKey(field)) {
             return false;
         }
         Object rawValue = item.get(field);
-        if (rawValue == null || (rawValue instanceof String && ((String) rawValue).isEmpty())) {
+        if (rawValue == null || rawValue.equals("") ||(rawValue instanceof String && ((String) rawValue).isEmpty())) {
+            return false;
+        }
+        if((rawValue instanceof String && isNumeric((String)rawValue))|| isNumeric(rawValue.toString())){
+           fieldValue = Double.parseDouble(rawValue.toString());
+        }
+        if(fieldValue==null && (operator.equalsIgnoreCase(">"))||operator.equalsIgnoreCase("<")) {
             return false;
         }
 
-        Comparable<Object> fieldValue = (Comparable<Object>) item.get(field);
-
         switch (operator) {
             case ">":
-                return fieldValue.compareTo(value) > 0;
+                return fieldValue.compareTo(Double.parseDouble(value.toString())) > 0;
             case "<":
-                return fieldValue.compareTo(value) < 0;
+                return fieldValue.compareTo(Double.parseDouble(value.toString())) < 0;
             case "==":
-                return fieldValue.equals(value);
+                return (item.get(field)).equals(value);
             case "contains":
                 return ((String) item.get(field)).contains((String) value);
             case "equals":
@@ -57,4 +62,14 @@ public class FilterService {
                 return false;
         }
     }
+
+    private boolean isNumeric(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
 }
