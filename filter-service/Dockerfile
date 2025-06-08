@@ -13,7 +13,7 @@ WORKDIR /build/filter-service
 RUN mvn clean package -DskipTests
 
 # Stage 2: Run the application
-FROM openjdk:11-jre-slim
+FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copy the built JAR from the build stage

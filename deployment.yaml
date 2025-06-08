@@ -17,6 +17,7 @@ spec:
       containers:
         - name: filter-service
           image: sepidmas/filter-service:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8081
           env:
@@ -54,6 +55,7 @@ spec:
       containers:
         - name: aggregation-service
           image: sepidmas/aggregation-service:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8082
           env:
@@ -91,6 +93,7 @@ spec:
       containers:
         - name: anonymization-service
           image: sepidmas/anonymization-service:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8083
           env:
@@ -128,6 +131,7 @@ spec:
       containers:
         - name: formatting-service
           image: sepidmas/formatting-service:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8084
           env:
@@ -165,6 +169,7 @@ spec:
       containers:
         - name: auth-service
           image: sepidmas/authentication-service:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8085
 ---
@@ -199,6 +204,7 @@ spec:
       containers:
         - name: data-product-service
           image: sepidmas/data-product-service:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8089
           env:
@@ -236,6 +242,7 @@ spec:
       containers:
         - name: coordinator-service
           image: sepidmas/coordinator-service:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
           env:

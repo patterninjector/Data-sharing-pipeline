@@ -1,7 +1,7 @@
 {
   "name": "BannedBooksPipeline",
   "description": "Processes banned books dataset with filtering, anonymization, and aggregation and formatting ",
-  "inputFile": "http://localhost:8089/data-json",
+  "inputFile": "http://data-product-service.default:8089/data-json",
   "processingMode" : "BROKEN_URL",
   "steps": [
     {

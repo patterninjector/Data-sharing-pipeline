@@ -1,5 +1,6 @@
 from locust import HttpUser, task, between
 import random
+from datetime import datetime
 
 class PipelineLoadTest(HttpUser):
     host = "http://localhost:8080"
@@ -40,7 +41,7 @@ class PipelineLoadTest(HttpUser):
 
         config = self.test_modes[mode]
         pipeline_file = f"{config['path']}book_url_pipeline_{random.randint(1, 4)}.json"
-
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] Running mode: {mode}, file: {pipeline_file}")
         with self.client.post(
                 "/run-pipeline-path-url",
                 json={

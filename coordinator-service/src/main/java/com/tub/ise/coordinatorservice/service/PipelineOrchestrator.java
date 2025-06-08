@@ -190,7 +190,7 @@ public class PipelineOrchestrator {
     private void savePipelineOutput(PipelineConfig config, Object data) throws IOException {
         String outputDir = "output";
         Files.createDirectories(Paths.get(outputDir));
-        String outputFileName = outputDir + "/" + config.getName() +"_"+config.getProcessingMode()+ "_output.json";
+        String outputFileName = outputDir + "/" + config.getName() +"_"+config.getProcessingMode()+"_"+String.valueOf(Math.random())+ "_output.json";
         objectMapper.writerWithDefaultPrettyPrinter()
                 .writeValue(new File(outputFileName), data);
         System.out.println("Pipeline completed: " + config.getName() +
