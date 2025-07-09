@@ -13,10 +13,7 @@ This project is deployable on the k8s and the required docker file for building 
 
 The following image illustrates the overall architecture of the application and showcases the structure of some predefined pipelines described in the configuration files:
 
-![Architecture Overview](/architecture.pdf)
-
-
-> 📝 Make sure the image exists at `docs/images/architecture.png`. You can update the path if your image is stored elsewhere.
+![Architecture Overview](architecture.png)
 
 ## ⚙️ Benchmarking Support
 
