@@ -1,3 +1,4 @@
+# Deployment file on Mac with M1/M2 chip
 # filter-service
 ---
 apiVersion: apps/v1
@@ -16,7 +17,7 @@ spec:
     spec:
       containers:
         - name: filter-service
-          image: sepidmas/filter-service:latest
+          image: anonymous4science/filter-service:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8081
@@ -54,7 +55,7 @@ spec:
     spec:
       containers:
         - name: aggregation-service
-          image: sepidmas/aggregation-service:latest
+          image: anonymous4science/aggregation-service:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8082
@@ -92,7 +93,7 @@ spec:
     spec:
       containers:
         - name: anonymization-service
-          image: sepidmas/anonymization-service:latest
+          image: anonymous4science/anonymization-service:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8083
@@ -130,7 +131,7 @@ spec:
     spec:
       containers:
         - name: formatting-service
-          image: sepidmas/formatting-service:latest
+          image: anonymous4science/formatting-service:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8084
@@ -168,7 +169,7 @@ spec:
     spec:
       containers:
         - name: auth-service
-          image: sepidmas/authentication-service:latest
+          image: anonymous4science/authentication-service:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8085
@@ -203,7 +204,7 @@ spec:
     spec:
       containers:
         - name: data-product-service
-          image: sepidmas/data-product-service:latest
+          image: anonymous4science/data-product-service:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8089
@@ -241,7 +242,7 @@ spec:
     spec:
       containers:
         - name: coordinator-service
-          image: sepidmas/coordinator-service:latest
+          image: anonymous4science/coordinator-service:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
